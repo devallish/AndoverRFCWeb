@@ -1,0 +1,169 @@
+{% extends "_layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block carousel_content %}
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active carousel-item-container">
+
+                {% for carousel_item in home.carousel_items.all %}
+
+                     <div class="item carousel-item-container">
+
+                        <div class="container">
+                            <div class="carousel-caption">
+
+                                <h1>{{ carousel_item.news_article.headline }}</h1>
+
+                                <p>{{ carousel_item.news_article.summary | safe }}</p>
+
+                                <p><a class="btn btn-lg btn-primary"
+                                      href="#"
+                                      role="button">Read More</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <h3 class="title-underline">News</h3>
+
+                    {% if home.news_articles %}
+                        <div class="list-group">
+                            {% for news in home.news_articles.all %}
+                                <a href="news/{{ news.id }}" class="list-group-item clearfix">
+                                    <h4 class="list-group-item-heading">{{ news.headline }}</h4>
+                                    <p class="list-group-item-text">{{ news.summary | safe }}</p>
+
+                                    <p><small class="pull-right">{{ news.news_date }}</small></p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <p>No news available.</p>
+                            <p>Check back later for updates.</p>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h3 class="title-underline">Fixtures</h3>
+
+                    {% if home.fixtures %}
+                        <div class="list-group">
+                            {% for fixture in home.next_fixtures %}
+                                <a href="#" class="list-group-item clearfix">
+                                    <h4 class="list-group-item-heading">{{ fixture.display_heading }}</h4>
+                                    <p class="list-group-item-text">{{ fixture.display_details }}</p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <p>No news available.</p>
+                            <p>Check back later for updates.</p>
+                        </div>
+                    {% endif %}
+
+                    <h3 class="title-underline">Events</h3>
+
+                    {% if home.fixtures %}
+                        <div class="list-group">
+                            {% for event in home.events.all %}
+                                <a href="#" class="list-group-item clearfix">
+                                    <h4 class="list-group-item-heading">{{ event.display_heading }}</h4>
+                                    <p class="list-group-item-text">{{ event.display_details }}</p>
+                                    {% if event.news_article %}
+                                        <p class="list-group-item-text">{{ event.news_article.summary | safe }}</p>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <p>No news available.</p>
+                            <p>Check back later for updates.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="title-underline">Sponsors</h3>
+
+                    <table class="table table-sponsors">
+                    <tbody>
+                        {% for sponsor in home.sponsors.all %}
+                            <td class="table-cell-sponsors">
+
+                                <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">
+                                    {% if sponsor.logo %}
+                                        <img class="img-responsive"
+                                             src="{{ sponsor.logo.url }}"
+                                             alt="sponsors logo"/>
+                                    {% else %}
+                                        <h4 class="list-group-item-heading">{{ sponsor.name }}</h4>
+                                        <p class="list-group-item-text">{{ sponsor.summary | safe }}</p>
+                                    {%  endif %}
+                                </a>
+                            </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="title-underline">Social Media</h3>
+            <a class="twitter-timeline"
+               href="https://twitter.com/AndoverRFC"
+               data-widget-id="586245346780647424"
+               data-chrome="nofooter">Tweets by @AndoverRFC</a>
+            <script>!function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                if(!d.getElementById(id)){js=d.createElement(s);
+                    js.id=id;js.src=p+"://platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js,fjs);
+                }}(document,"script","twitter-wjs");
+            </script>
+
+        </div>
+
+    </div>
+
+{% endblock %}

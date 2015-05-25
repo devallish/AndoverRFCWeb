@@ -1,0 +1,114 @@
+{% extends "_layout.html" %}
+
+{% block title %}Sponsors{% endblock %}
+
+{% load staticfiles %}
+
+{% block main_content %}
+
+    <h3 class="title-underline">About</h3>
+    <p>{{ sponsorship.about }}</p>
+    <p>If anyone would like to become involved in sponsorship of the club and or any of its squads please get in contact with us.
+    </p>
+
+    <h3 class="title-underline">Club Sponsors</h3>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a class="thumbnail-sponsors" href="{{ sponsors.primary_url }}">
+                        {% if sponsors.logo %}
+                            <img class="img-responsive"
+                                 src="{{ sponsors.logo.url }}"
+                                 alt="sponsors logo"/>
+                        {% else %}
+
+                        {%  endif %}
+                        </a>
+                    </div>
+                    <div class="col-xs-8">
+                        <h4 class="list-group-item-heading">{{ sponsors.name }}</h4>
+                        <p class="list-group-item-text">{{ sponsors.summary | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a class="thumbnail-sponsors" href="{{ sponsors.primary_url }}">
+                        {% if sponsors.logo %}
+                            <img class="img-responsive"
+                                 src="{{ sponsors.logo.url }}"
+                                 alt="sponsors logo"/>
+                        {% else %}
+
+                        {%  endif %}
+                        </a>
+                    </div>
+                    <div class="col-xs-8">
+                        <h4 class="list-group-item-heading">{{ sponsors.name }}</h4>
+                        <p class="list-group-item-text">{{ sponsors.summary | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <table class="table table-sponsors">
+        <tbody>
+            {% for sponsor in sponsors.all %}
+                <td class="table-cell-sponsors">
+
+                    <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">
+                        {% if sponsor.logo %}
+                            <img class="img-responsive"
+                                 src="{{ sponsor.logo.url }}"
+                                 alt="sponsors logo"/>
+                        {% else %}
+                            <h4 class="list-group-item-heading">{{ sponsor.name }}</h4>
+                            <p class="list-group-item-text">{{ sponsor.summary | safe }}</p>
+                        {%  endif %}
+                    </a>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="title-underline">Squad Sponsors</h3>
+
+    <table class="table table-sponsors">
+        <tbody>
+            {% for sponsor in sponsors.all %}
+                <td class="table-cell-sponsors">
+
+                    <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">
+                        {% if sponsor.logo %}
+                            <img class="img-responsive"
+                                 src="{{ sponsor.logo.url }}"
+                                 alt="sponsors logo"/>
+                        {% else %}
+                            <h4 class="list-group-item-heading">{{ sponsor.name }}</h4>
+                            <p class="list-group-item-text">{{ sponsor.summary | safe }}</p>
+                        {%  endif %}
+                    </a>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

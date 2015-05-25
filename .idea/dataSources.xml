@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3524203816">
+    <data-source source="LOCAL" name="Andover RFC 3" uuid="8a3d5444-fb1c-41c0-a22d-bf4859a04ce4">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.andoverrfc3</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

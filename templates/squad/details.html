@@ -1,0 +1,178 @@
+{% extends "_layout.html" %}
+
+{% block title %}{{ squad.name }}{% endblock %}
+
+{% load staticfiles %}
+
+{% block main_content %}
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <h3 class="title-underline">{{ squad.name }}</h3>
+
+            {% if squad.squad_photo %}
+                <img src="{{ squad.squad_photo.url }}"
+                     class="img-responsive center-block"
+                     alt="Squad Photo" />
+            {% endif %}
+
+            <h3 class="title-underline">Information</h3>
+            <div class="text-justify">
+                {{ squad.information|safe }}
+            </div>
+
+            {% if squad.selection.count > 0 %}
+
+                <h3 class="title-underline">Selection</h3>
+
+                {% for selection in squad.selection.all %}
+
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Opposition</th>
+                                <th>Location</th>
+                                <th>Meet Time</th>
+                                <th>Dress Code</th>
+                                <th>Doofa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ selection.fixture.opposition }}</td>
+                                <td>{{ selection.fixture.venue }}</td>
+                                <td>{{ selection.fixture.meet_time }}</td>
+                                <td>{{ selection.fixture.dress_code }}</td>
+                                <td>{{ selection.fixture.doofa }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Player</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for player in selection.split_players.Left %}
+                                        <tr>
+                                            <td>{{ player.position_number }}</td>
+                                            <td>{{ player.person.display_name }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Position</th>
+                                        <th>Player</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for player in selection.split_players.Right %}
+                                        <tr>
+                                            <td>{{ player.position_number }}</td>
+                                            <td>{{ player.person.display_name }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+            <h3 class="title-underline">Contacts</h3>
+
+            {% if squad.people %}
+                <table class="table table-condensed table-striped">
+                    <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>EMail</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for squad_person_role in squad.people.all %}
+
+                            <tr>
+                                <td>{{ squad_person_role.role.name }}</td>
+                                <td>{{ squad_person_role.person.display_name }}</td>
+                                <td>{{ squad_person_role.person.mobile }}</td>
+                                <td><a href="mailto:{{ squad_person_role.person.email }}">{{ squad_person_role.person.email }}</a></td>
+                            </tr>
+
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+            {% endif %}
+
+        </div>
+
+        <div class="col-md-4">
+
+            <h3 class="title-underline">News</h3>
+
+            {% if squad.news_articles %}
+                <div class="list-group">
+                    {% for news in squad.news_articles.all %}
+                        <a href="#" class="list-group-item clearfix">
+                            <h4 class="list-group-item-heading">{{ news.headline }}</h4>
+                            <p class="list-group-item-text">{{ news.summary | safe }}</p>
+
+                            <p><small class="pull-right">{{ news.news_date }}</small></p>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="panel-body">
+                    <p>No news available.</p>
+                    <p>Check back later for updates.</p>
+                </div>
+            {% endif %}
+
+            <h3 class="title-underline">Sponsors</h3>
+
+            <table class="table table-sponsors">
+                <tbody>
+                    {% for sponsor in squad.sponsors.all %}
+                        <td class="table-cell-sponsors">
+
+                            <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">
+                                {% if sponsor.logo %}
+                                    <img class="img-responsive"
+                                         src="{{ sponsor.logo.url }}"
+                                         alt="sponsors logo"/>
+                                {% else %}
+                                    <h4 class="list-group-item-heading">{{ sponsor.name }}</h4>
+                                    <p class="list-group-item-text">{{ sponsor.summary | safe }}</p>
+                                {%  endif %}
+                            </a>
+                        </td>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}

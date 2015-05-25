@@ -1,0 +1,160 @@
+{%  load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+{#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">#}
+        <link href="{% static "/static/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/static/css/style.css" %}" rel="stylesheet" type="text/css" />
+        <link href="{% static "/static/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Indie+Flower|Play:400,700' rel='stylesheet' type='text/css'>
+        <title>Andover Rugby Club - {%  block title %}{% endblock %}</title>
+    </head>
+    <body>
+
+        <div class="container-fluid site-header-padding-outer">
+            <div class="container site-header-padding-inner">
+                <h1 class="site-title">ANDOVER RUGBY CLUB</h1>
+            </div>
+        </div>
+
+        <div class="container-fluid site-header-container-outer">
+
+            <div class="container site-header-container-inner">
+
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-header">
+
+                        <button type="button"
+                              class="navbar-toggle collapsed"
+                              data-toggle="collapse"
+                              data-target="#navbar"
+                              aria-expanded="false"
+                              aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+    {#                                <a href="#" class="navbar-brand">#}
+    {#                                    Andover Rugby Club#}
+    {#                                </a>#}
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#">Fixtures and Events</a></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   role="button"
+                                   aria-expanded="false">Senior Squads <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    {% for menu_item in senior_menu_items.all %}
+                                        <li><a href="squads/{{ menu_item.squad.id }}">{{ menu_item.display_name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   role="button"
+                                   aria-expanded="false">Junior Squads <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    {% for menu_item in junior_menu_items.all %}
+                                        <li><a href="squads/{{ menu_item.squad.id }}">{{ menu_item.display_name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+
+                            <li><a href="#">Directions</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="sponsors">Sponsors</a></li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a class="nav-social-media" href="https://www.facebook.com/AndoverRFC?fref=ts"
+                                   target="_blank">
+                                    <span class="fa fa-facebook fa-2x"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-social-media"
+                                   href="https://twitter.com/AndoverRFC"
+                                   target="_blank">
+                                    <span class="fa fa-twitter fa-2x"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="container-fluid site-carousel-container-outer">
+            <div class="container site-carousel-container-inner">
+                {% block carousel_content %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="container-fluid site-main-content-container-outer">
+            <div class="container site-main-content-container-inner">
+                {%  block main_content %}There should be section content here.{% endblock %}
+            </div>
+        </div>
+
+        <div class="container-fluid site-footer-container-outer">
+            <div class="container site-footer-container-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6 text-center">
+                            <ul class="footer-link-list">
+                                <li class="footer-link" role="presentation"><a href="#">Contact Us</a></li>
+                                <li class="footer-link" role="presentation"><a href="#">Book Us</a></li>
+                                <li class="footer-link" role="presentation"><a href="#">Find Us</a></li>
+                                <li class="footer-link" role="presentation"><a href="#">Follow Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="footer-address-container">
+                                <address>
+                                    <strong>Andover RFC</strong><br>
+                                        The Goodship Ground<br>
+                                        Charlton<br>
+                                        Andover<br>
+                                        SP10 3SW<br>
+                                        (01264) 364341<br>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container text-center footer-ack-container">
+                    <span class="footer-link">Copyright Andover Rugby Club 2015</span>
+                    <span class="footer-link">Designed by <a href="www.devallish.com">Devallish</a></span>
+                    <span class="footer-link">Powered by <a href="www.djangoproject.com">Django</a></span>
+                    <span class="footer-link">Powered by <a href="www.python.org">Python</a></span>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    </body>
+</html>

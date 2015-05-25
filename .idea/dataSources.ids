@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Andover RFC 3" uuid="8a3d5444-fb1c-41c0-a22d-bf4859a04ce4">
+    <database-info product="SQLite" version="3.7.6.3" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+    <table name="auth_group" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(80)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_auth_group_permissions_2" table="auth_group_permissions" schema="" catalog="" columns="group_id"/>
+      <exported-key name="#FAKE_auth_user_groups_1" table="auth_user_groups" schema="" catalog="" columns="group_id"/>
+    </table>
+    <table name="auth_group_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_group_permissions_1" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_group_permissions_2" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_group_permissions_8373b171" unique="true" columns="permission_id"/>
+      <index name="auth_group_permissions_0e939a4f" unique="true" columns="group_id"/>
+    </table>
+    <table name="auth_permission" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="codename" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_permission_1" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_auth_group_permissions_1" table="auth_group_permissions" schema="" catalog="" columns="permission_id"/>
+      <exported-key name="#FAKE_auth_user_user_permissions_1" table="auth_user_user_permissions" schema="" catalog="" columns="permission_id"/>
+      <index name="auth_permission_417f1b1c" unique="true" columns="content_type_id"/>
+    </table>
+    <table name="auth_user" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="password" sqlType="VARCHAR(128)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_login" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="is_superuser" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="username" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(30)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(75)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="is_staff" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="is_active" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date_joined" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_auth_user_groups_2" table="auth_user_groups" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_auth_user_user_permissions_2" table="auth_user_user_permissions" schema="" catalog="" columns="user_id"/>
+      <exported-key name="#FAKE_django_admin_log_1" table="django_admin_log" schema="" catalog="" columns="user_id"/>
+    </table>
+    <table name="auth_user_groups" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="group_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_user_groups_1" columns="group_id" ref-table="auth_group" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_user_groups_2" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_user_groups_0e939a4f" unique="true" columns="group_id"/>
+      <index name="auth_user_groups_e8701ad4" unique="true" columns="user_id"/>
+    </table>
+    <table name="auth_user_user_permissions" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="permission_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_auth_user_user_permissions_1" columns="permission_id" ref-table="auth_permission" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_auth_user_user_permissions_2" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="auth_user_user_permissions_8373b171" unique="true" columns="permission_id"/>
+      <index name="auth_user_user_permissions_e8701ad4" unique="true" columns="user_id"/>
+    </table>
+    <table name="django_admin_log" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="action_time" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="object_id" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="object_repr" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="action_flag" sqlType="SMALLINT UNSIGNED" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="change_message" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="content_type_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_django_admin_log_1" columns="user_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_django_admin_log_2" columns="content_type_id" ref-table="django_content_type" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="django_admin_log_e8701ad4" unique="true" columns="user_id"/>
+      <index name="django_admin_log_417f1b1c" unique="true" columns="content_type_id"/>
+    </table>
+    <table name="django_content_type" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="app_label" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="model" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_auth_permission_1" table="auth_permission" schema="" catalog="" columns="content_type_id"/>
+      <exported-key name="#FAKE_django_admin_log_2" table="django_admin_log" schema="" catalog="" columns="content_type_id"/>
+    </table>
+    <table name="django_migrations" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="app" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR(255)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="applied" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+    </table>
+    <table name="django_session" schema="" catalog="" type="TABLE">
+      <column name="session_key" sqlType="VARCHAR(40)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="session_data" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="session_key"/>
+      <index name="django_session_de54fa62" unique="true" columns="expire_date"/>
+    </table>
+    <table name="event_event" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="use_event_time" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="information" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="event_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="news_article_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_event_event_1" columns="news_article_id" ref-table="news_newsarticle" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_home_home_events_1" table="home_home_events" schema="" catalog="" columns="event_id"/>
+    </table>
+    <table name="fixture_fixture" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="opposition" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="venue" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="fixture_date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="kick_off_time" sqlType="TIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="doofa" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="dress_code" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="meet_time" sqlType="TIME" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_home_home_fixtures_1" table="home_home_fixtures" schema="" catalog="" columns="fixture_id"/>
+      <exported-key name="#FAKE_squad_squad_fixtures_1" table="squad_squad_fixtures" schema="" catalog="" columns="fixture_id"/>
+      <exported-key name="#FAKE_squad_squadselection_1" table="squad_squadselection" schema="" catalog="" columns="fixture_id"/>
+    </table>
+    <table name="home_carouselitem" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="ordinal_position" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="news_article_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_carouselitem_1" columns="news_article_id" ref-table="news_newsarticle" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_home_home_carousel_items_2" table="home_home_carousel_items" schema="" catalog="" columns="carouselitem_id"/>
+    </table>
+    <table name="home_home" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_home_home_carousel_items_1" table="home_home_carousel_items" schema="" catalog="" columns="home_id"/>
+      <exported-key name="#FAKE_home_home_events_2" table="home_home_events" schema="" catalog="" columns="home_id"/>
+      <exported-key name="#FAKE_home_home_fixtures_2" table="home_home_fixtures" schema="" catalog="" columns="home_id"/>
+      <exported-key name="#FAKE_home_home_news_articles_2" table="home_home_news_articles" schema="" catalog="" columns="home_id"/>
+      <exported-key name="#FAKE_home_home_sponsors_2" table="home_home_sponsors" schema="" catalog="" columns="home_id"/>
+    </table>
+    <table name="home_home_carousel_items" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="carouselitem_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="home_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_home_carousel_items_1" columns="home_id" ref-table="home_home" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_home_home_carousel_items_2" columns="carouselitem_id" ref-table="home_carouselitem" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="home_home_carousel_items_b9b95ece" unique="true" columns="home_id"/>
+      <index name="home_home_carousel_items_fd72d192" unique="true" columns="carouselitem_id"/>
+    </table>
+    <table name="home_home_events" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="home_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="event_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_home_events_1" columns="event_id" ref-table="event_event" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_home_home_events_2" columns="home_id" ref-table="home_home" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="home_home_events_4437cfac" unique="true" columns="event_id"/>
+      <index name="home_home_events_b9b95ece" unique="true" columns="home_id"/>
+    </table>
+    <table name="home_home_fixtures" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="home_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="fixture_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_home_fixtures_1" columns="fixture_id" ref-table="fixture_fixture" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_home_home_fixtures_2" columns="home_id" ref-table="home_home" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="home_home_fixtures_7774e9c4" unique="true" columns="fixture_id"/>
+      <index name="home_home_fixtures_b9b95ece" unique="true" columns="home_id"/>
+    </table>
+    <table name="home_home_news_articles" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="home_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="newsarticle_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_home_news_articles_1" columns="newsarticle_id" ref-table="news_newsarticle" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_home_home_news_articles_2" columns="home_id" ref-table="home_home" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="home_home_news_articles_7a2f2bdc" unique="true" columns="newsarticle_id"/>
+      <index name="home_home_news_articles_b9b95ece" unique="true" columns="home_id"/>
+    </table>
+    <table name="home_home_sponsors" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="home_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="sponsor_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_home_home_sponsors_1" columns="sponsor_id" ref-table="sponsor_sponsor" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_home_home_sponsors_2" columns="home_id" ref-table="home_home" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="home_home_sponsors_42545d36" unique="true" columns="sponsor_id"/>
+      <index name="home_home_sponsors_b9b95ece" unique="true" columns="home_id"/>
+    </table>
+    <table name="news_newsarticle" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="headline" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="summary" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="full_story" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="news_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="remove_date" sqlType="DATE" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="news_image" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="publish_date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_event_event_1" table="event_event" schema="" catalog="" columns="news_article_id"/>
+      <exported-key name="#FAKE_home_carouselitem_1" table="home_carouselitem" schema="" catalog="" columns="news_article_id"/>
+      <exported-key name="#FAKE_home_home_news_articles_1" table="home_home_news_articles" schema="" catalog="" columns="newsarticle_id"/>
+      <exported-key name="#FAKE_squad_squad_news_articles_1" table="squad_squad_news_articles" schema="" catalog="" columns="newsarticle_id"/>
+    </table>
+    <table name="person_person" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="image" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="surname" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="forenames" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(75)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="mobile" sqlType="VARCHAR(25)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR(25)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_squad_squadpersonrole_2" table="squad_squadpersonrole" schema="" catalog="" columns="person_id"/>
+      <exported-key name="#FAKE_squad_squadselectionitem_1" table="squad_squadselectionitem" schema="" catalog="" columns="person_id"/>
+    </table>
+    <table name="sponsor_sponsor" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="summary" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="information" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="primary_url" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="secondary_url" sqlType="VARCHAR(200)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="primary_phone" sqlType="VARCHAR(25)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="secondary_phone" sqlType="VARCHAR(25)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="logo" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_home_home_sponsors_1" table="home_home_sponsors" schema="" catalog="" columns="sponsor_id"/>
+      <exported-key name="#FAKE_squad_squad_sponsors_1" table="squad_squad_sponsors" schema="" catalog="" columns="sponsor_id"/>
+    </table>
+    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
+      <column name="name" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="seq" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="squad_squad" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="information" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="squad_photo" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_squad_squad_fixtures_2" table="squad_squad_fixtures" schema="" catalog="" columns="squad_id"/>
+      <exported-key name="#FAKE_squad_squad_news_articles_2" table="squad_squad_news_articles" schema="" catalog="" columns="squad_id"/>
+      <exported-key name="#FAKE_squad_squad_people_2" table="squad_squad_people" schema="" catalog="" columns="squad_id"/>
+      <exported-key name="#FAKE_squad_squad_selection_2" table="squad_squad_selection" schema="" catalog="" columns="squad_id"/>
+      <exported-key name="#FAKE_squad_squad_sponsors_2" table="squad_squad_sponsors" schema="" catalog="" columns="squad_id"/>
+    </table>
+    <table name="squad_squad_fixtures" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squad_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="fixture_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squad_fixtures_1" columns="fixture_id" ref-table="fixture_fixture" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squad_fixtures_2" columns="squad_id" ref-table="squad_squad" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squad_fixtures_7774e9c4" unique="true" columns="fixture_id"/>
+      <index name="squad_squad_fixtures_9e6fbaf7" unique="true" columns="squad_id"/>
+    </table>
+    <table name="squad_squad_news_articles" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squad_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="newsarticle_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squad_news_articles_1" columns="newsarticle_id" ref-table="news_newsarticle" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squad_news_articles_2" columns="squad_id" ref-table="squad_squad" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squad_news_articles_7a2f2bdc" unique="true" columns="newsarticle_id"/>
+      <index name="squad_squad_news_articles_9e6fbaf7" unique="true" columns="squad_id"/>
+    </table>
+    <table name="squad_squad_people" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squad_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squadpersonrole_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squad_people_1" columns="squadpersonrole_id" ref-table="squad_squadpersonrole" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squad_people_2" columns="squad_id" ref-table="squad_squad" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squad_people_46e9f401" unique="true" columns="squadpersonrole_id"/>
+      <index name="squad_squad_people_9e6fbaf7" unique="true" columns="squad_id"/>
+    </table>
+    <table name="squad_squad_selection" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squad_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squadselection_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squad_selection_1" columns="squadselection_id" ref-table="squad_squadselection" ref-schema="" ref-catalog="" ref-columns="fixture_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squad_selection_2" columns="squad_id" ref-table="squad_squad" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squad_selection_36880ecc" unique="true" columns="squadselection_id"/>
+      <index name="squad_squad_selection_9e6fbaf7" unique="true" columns="squad_id"/>
+    </table>
+    <table name="squad_squad_sponsors" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squad_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="sponsor_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squad_sponsors_1" columns="sponsor_id" ref-table="sponsor_sponsor" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squad_sponsors_2" columns="squad_id" ref-table="squad_squad" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squad_sponsors_42545d36" unique="true" columns="sponsor_id"/>
+      <index name="squad_squad_sponsors_9e6fbaf7" unique="true" columns="squad_id"/>
+    </table>
+    <table name="squad_squadpersonrole" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="display_position" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="person_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="role_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squadpersonrole_1" columns="role_id" ref-table="squad_squadrole" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squadpersonrole_2" columns="person_id" ref-table="person_person" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_squad_squad_people_1" table="squad_squad_people" schema="" catalog="" columns="squadpersonrole_id"/>
+    </table>
+    <table name="squad_squadrole" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="information" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_squad_squadpersonrole_1" table="squad_squadpersonrole" schema="" catalog="" columns="role_id"/>
+    </table>
+    <table name="squad_squadselection" schema="" catalog="" type="TABLE">
+      <column name="fixture_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="fixture_id"/>
+      <foreign-key name="#FAKE_squad_squadselection_1" columns="fixture_id" ref-table="fixture_fixture" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_squad_squad_selection_1" table="squad_squad_selection" schema="" catalog="" columns="squadselection_id"/>
+      <exported-key name="#FAKE_squad_squadselection_players_2" table="squad_squadselection_players" schema="" catalog="" columns="squadselection_id"/>
+    </table>
+    <table name="squad_squadselection_players" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squadselection_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="squadselectionitem_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_squad_squadselection_players_1" columns="squadselectionitem_id" ref-table="squad_squadselectionitem" ref-schema="" ref-catalog="" ref-columns="person_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_squad_squadselection_players_2" columns="squadselection_id" ref-table="squad_squadselection" ref-schema="" ref-catalog="" ref-columns="fixture_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="squad_squadselection_players_77231ec6" unique="true" columns="squadselectionitem_id"/>
+      <index name="squad_squadselection_players_36880ecc" unique="true" columns="squadselection_id"/>
+    </table>
+    <table name="squad_squadselectionitem" schema="" catalog="" type="TABLE">
+      <column name="person_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="position_number" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="person_id"/>
+      <foreign-key name="#FAKE_squad_squadselectionitem_1" columns="person_id" ref-table="person_person" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_squad_squadselection_players_1" table="squad_squadselection_players" schema="" catalog="" columns="squadselectionitem_id"/>
+    </table>
+  </data-source>
+</component>

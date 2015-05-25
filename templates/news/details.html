@@ -1,0 +1,73 @@
+{% extends "_layout.html" %}
+
+{% block title %}{{ news_article.headline }}{% endblock %}
+
+{% load staticfiles %}
+
+{% block main_content %}
+
+    <div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="title-underline">{{ news_article.headline }}
+                <span class="pull-right">
+                    <small>Share this news </small>
+
+                    <a class="fa fa-facebook-square"></a>
+
+                    <a href="https://twitter.com/share"
+                       class="fa fa-twitter-square"
+                       data-via="devallish"
+                       data-count="none">
+                    </a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                        if(!d.getElementById(id)){js=d.createElement(s);
+                            js.id=id;
+                            js.src=p+'://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js,fjs);
+                        }}(document, 'script', 'twitter-wjs');
+                    </script>
+                </span>
+            </h3>
+
+            {% if news_article.news_image %}
+                <img src="{{ news_article.news_image.url }}"
+                     alt="news image"
+                     class="img-responsive center-block">
+            {% endif %}
+
+
+            <p>
+            {{ news_article.full_story | safe }}
+            </p>
+
+            <p><small class="pull-right">{{ news_article.news_date }}</small></p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="title-underline">Other News</h3>
+
+                {% if squad.news_articles %}
+                    <div class="list-group">
+                        {% for news in squad.news_articles.all %}
+                            <a href="#" class="list-group-item clearfix">
+                                <h4 class="list-group-item-heading">{{ news.headline }}</h4>
+                                <p class="list-group-item-text">{{ news.summary | safe }}</p>
+
+                                <p><small class="pull-right">{{ news.news_date }}</small></p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="panel-body">
+                        <p>No news available.</p>
+                        <p>Check back later for updates.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{#class="twitter-share-button" #}
