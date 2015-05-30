@@ -6,7 +6,7 @@ from sitelevel import context_builder
 def index(request):
     home = Home.objects.all().first()
     template = loader.get_template('home/index.html')
-    context = context_builder.create_context('home', home)
+    context = context_builder.create_context(home)
     return HttpResponse(template.render(context))
 
 

@@ -10,24 +10,26 @@
 
         <div class="col-md-8">
 
-            <h3 class="title-underline">{{ squad.name }}</h3>
+            <h3 class="title-underline">{{ model.name }}</h3>
 
-            {% if squad.squad_photo %}
-                <img src="{{ squad.squad_photo.url }}"
+            {% if model.squad_photo %}
+                <div class="">
+                <img src="{{ model.squad_photo.url }}"
                      class="img-responsive center-block"
                      alt="Squad Photo" />
+                </div>
             {% endif %}
 
             <h3 class="title-underline">Information</h3>
             <div class="text-justify">
-                {{ squad.information|safe }}
+                {{ model.information|safe }}
             </div>
 
-            {% if squad.selection.count > 0 %}
+            {% if model.selection.count > 0 %}
 
                 <h3 class="title-underline">Selection</h3>
 
-                {% for selection in squad.selection.all %}
+                {% for selection in model.selection.all %}
 
                     <table class="table table-condensed">
                         <thead>
@@ -96,7 +98,7 @@
 
             <h3 class="title-underline">Contacts</h3>
 
-            {% if squad.people %}
+            {% if model.people %}
                 <table class="table table-condensed table-striped">
                     <thead>
                     <tr>
@@ -110,7 +112,7 @@
 
                     <tbody>
 
-                        {% for squad_person_role in squad.people.all %}
+                        {% for squad_person_role in model.people.all %}
 
                             <tr>
                                 <td>{{ squad_person_role.role.name }}</td>
@@ -132,9 +134,9 @@
 
             <h3 class="title-underline">News</h3>
 
-            {% if squad.news_articles %}
+            {% if model.news_articles %}
                 <div class="list-group">
-                    {% for news in squad.news_articles.all %}
+                    {% for news in model.news_articles.all %}
                         <a href="#" class="list-group-item clearfix">
                             <h4 class="list-group-item-heading">{{ news.headline }}</h4>
                             <p class="list-group-item-text">{{ news.summary | safe }}</p>
@@ -154,7 +156,7 @@
 
             <table class="table table-sponsors">
                 <tbody>
-                    {% for sponsor in squad.sponsors.all %}
+                    {% for sponsor in model.sponsors.all %}
                         <td class="table-cell-sponsors">
 
                             <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">

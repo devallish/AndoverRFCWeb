@@ -12,8 +12,8 @@ def get_senior_squad_menu_items():
     return senior_squad_menu_items.all()
 
 
-def create_context(model_name, model):
+def create_context(model):
     junior_menu_items = get_junior_squad_menu_items()
     senior_menu_items = get_senior_squad_menu_items()
-    context = Context({model_name: model, 'junior_menu_items': junior_menu_items, 'senior_menu_items': senior_menu_items})
+    context = Context({'model': model, 'junior_menu_items': junior_menu_items, 'senior_menu_items': senior_menu_items})
     return context

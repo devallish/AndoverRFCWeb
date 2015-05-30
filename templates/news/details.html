@@ -31,15 +31,17 @@
             </h3>
 
             {% if news_article.news_image %}
-                <img src="{{ news_article.news_image.url }}"
-                     alt="news image"
-                     class="img-responsive center-block">
+                <div class="img-container">
+                    <img src="{{ news_article.news_image.url }}"
+                         alt="news image"
+                         class="img-responsive center-block">
+                </div>
             {% endif %}
 
 
-            <p>
-            {{ news_article.full_story | safe }}
-            </p>
+            <div class="text-justify">
+                {{ news_article.full_story_formatted | safe }}
+            </div>
 
             <p><small class="pull-right">{{ news_article.news_date }}</small></p>
             </div>

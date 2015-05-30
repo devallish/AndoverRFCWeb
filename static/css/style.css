@@ -6,7 +6,8 @@ body{
     -o-background-size: cover;
     background-size: cover;
     /*font-family: 'Indie Flower', cursive;*/
-    font-family: 'Play', sans-serif;
+    /*font-family: 'Play', sans-serif;*/
+    font-family: 'Noto Sans', 'sans-serif';
 }
 
 /*
@@ -67,6 +68,11 @@ span.footer-link{
     border-bottom-width: 2px;
     border-bottom-color: #a50000;
     border-bottom-style: solid;
+}
+
+
+.img-container{
+    margin-bottom: 10px;
 }
 
 /*.carousel{*/

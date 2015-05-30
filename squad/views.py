@@ -12,5 +12,5 @@ def index(request):
 def details(request, squad_id):
     squad = Squad.objects.get(id=squad_id)
     template = loader.get_template('squad/details.html')
-    context = context_builder.create_context('squad', squad)
+    context = context_builder.create_context(squad)
     return HttpResponse(template.render(context))

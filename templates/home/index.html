@@ -7,33 +7,42 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+            {% for carousel_item in model.carousel_items.all %}
+                {%  if forloop.first %}
+                    <li data-target="#myCarousel" data-slide-to={{ forloop.counter0 }} class="active"></li>
+                {% else %}
+                    <li data-target="#myCarousel" data-slide-to={{ forloop.counter0 }}></li>
+                {% endif  %}
+            {% endfor %}
+
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="item active carousel-item-container">
 
-                {% for carousel_item in home.carousel_items.all %}
+            {% for carousel_item in model.carousel_items.all %}
 
-                     <div class="item carousel-item-container">
+                {%  if forloop.first %}
+                    <div class="item active carousel-item-container">
+                {% else %}
+                    <div class="item carousel-item-container">
+                {% endif  %}
 
-                        <div class="container">
-                            <div class="carousel-caption">
 
-                                <h1>{{ carousel_item.news_article.headline }}</h1>
+                    <div class="container">
+                        <div class="carousel-caption">
 
-                                <p>{{ carousel_item.news_article.summary | safe }}</p>
+                            <h1>{{ carousel_item.news_article.headline }}</h1>
 
-                                <p><a class="btn btn-lg btn-primary"
-                                      href="#"
-                                      role="button">Read More</a></p>
-                            </div>
+                            <p>{{ carousel_item.news_article.summary | safe }}</p>
+
+                            <p><a class="btn btn-primary"
+                                  href="#"
+                                  role="button">Read More</a></p>
                         </div>
                     </div>
+                </div>
 
-                {% endfor %}
-            </div>
+            {% endfor %}
+
         </div>
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -58,9 +67,9 @@
 
                     <h3 class="title-underline">News</h3>
 
-                    {% if home.news_articles %}
+                    {% if model.news_articles %}
                         <div class="list-group">
-                            {% for news in home.news_articles.all %}
+                            {% for news in model.news_articles.all %}
                                 <a href="news/{{ news.id }}" class="list-group-item clearfix">
                                     <h4 class="list-group-item-heading">{{ news.headline }}</h4>
                                     <p class="list-group-item-text">{{ news.summary | safe }}</p>
@@ -82,9 +91,9 @@
 
                     <h3 class="title-underline">Fixtures</h3>
 
-                    {% if home.fixtures %}
+                    {% if model.fixtures %}
                         <div class="list-group">
-                            {% for fixture in home.next_fixtures %}
+                            {% for fixture in model.next_fixtures %}
                                 <a href="#" class="list-group-item clearfix">
                                     <h4 class="list-group-item-heading">{{ fixture.display_heading }}</h4>
                                     <p class="list-group-item-text">{{ fixture.display_details }}</p>
@@ -100,9 +109,9 @@
 
                     <h3 class="title-underline">Events</h3>
 
-                    {% if home.fixtures %}
+                    {% if model.events %}
                         <div class="list-group">
-                            {% for event in home.events.all %}
+                            {% for event in model.events.all %}
                                 <a href="#" class="list-group-item clearfix">
                                     <h4 class="list-group-item-heading">{{ event.display_heading }}</h4>
                                     <p class="list-group-item-text">{{ event.display_details }}</p>
@@ -127,7 +136,7 @@
 
                     <table class="table table-sponsors">
                     <tbody>
-                        {% for sponsor in home.sponsors.all %}
+                        {% for sponsor in model.sponsors.all %}
                             <td class="table-cell-sponsors">
 
                                 <a class="thumbnail thumbnail-sponsors" href="{{ sponsor.primary_url }}" class="list-group-item clearfix">

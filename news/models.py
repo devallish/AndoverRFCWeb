@@ -16,6 +16,13 @@ class NewsArticle(models.Model):
     publish_date = models.DateField(default=date.today())
     remove_date = models.DateField(null=True, blank=True)
 
+    def full_story_formatted(self):
+        formatted = self.full_story.replace('<p>', '<p class="text-justify" >')
+        # formatted = formatted.replace('<p class="text-justify" >', '<p class="text-justify lead" >', 1)
+        formatted = formatted.replace('<p class="text-justify" >', '<p class="text-justify" ><strong>', 1)
+        formatted = formatted.replace('</p>', '</strong>', 1)
+        return formatted
+
     def display_name(self):
         return self.news_date.strftime('%a %d %b %Y') + ' - ' + self.headline
 

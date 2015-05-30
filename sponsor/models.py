@@ -14,6 +14,8 @@ class Sponsor(models.Model):
     secondary_url = models.URLField(null=True, blank=True)
     primary_phone = models.CharField(max_length=25, null=True, blank=True)
     secondary_phone = models.CharField(max_length=25, null=True, blank=True)
+    is_club_sponsor = models.BooleanField(default=False)
+    is_squad_sponsor = models.BooleanField(default=False)
     logo = models.ImageField(upload_to=create_sponsor_image_filename, null=True, blank=True)
 
     def __unicode__(self):
@@ -33,3 +35,11 @@ class SponsorshipInformation(models.Model):
 
     def __str__(self):
         return 'Sponsorship Information'
+
+
+class SponsorRow:
+    left = Sponsor
+    right = Sponsor
+
+    def __init__(self, left):
+        self.left = left
